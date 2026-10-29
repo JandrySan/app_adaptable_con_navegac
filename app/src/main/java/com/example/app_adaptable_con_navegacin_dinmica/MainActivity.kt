@@ -115,7 +115,7 @@ private fun ReplyApp() {
                         NavigationRailItem(selected = mailbox == item, onClick = { mailbox = item; selected = null }, icon = { Text(item.symbol) }, label = { Text(item.title) })
                     }
                 }
-                mainContent()
+                Box(Modifier.weight(1f).fillMaxHeight()) { mainContent() }
             }
         } else {
             mainContent()
