@@ -135,7 +135,15 @@ private fun EmailList(list: List<Email>, selected: Email?, onSelect: (Email) -> 
                 Spacer(Modifier.width(14.dp))
                 Column(Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(email.sender, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                        Text(
+                            email.sender,
+                            style = MaterialTheme.typography.titleSmall,
+                            color = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurface,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.weight(1f),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
                         Text(email.time, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                     Text(email.subject, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium, maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -166,7 +174,12 @@ private fun EmailDetail(email: Email, onBack: () -> Unit, modifier: Modifier = M
         Row(verticalAlignment = Alignment.CenterVertically) {
             Avatar(email)
             Column(Modifier.padding(start = 14.dp)) {
-                Text(email.sender, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                Text(
+                    email.sender,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontWeight = FontWeight.Bold
+                )
                 Text("para mí · ${email.time}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
