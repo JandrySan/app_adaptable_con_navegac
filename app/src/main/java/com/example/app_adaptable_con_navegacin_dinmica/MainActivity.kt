@@ -12,6 +12,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -153,7 +155,7 @@ private fun Avatar(email: Email) {
 
 @Composable
 private fun EmailDetail(email: Email, onBack: () -> Unit, modifier: Modifier = Modifier, fullScreen: Boolean = false) {
-    Column(modifier.fillMaxSize().background(MaterialTheme.colorScheme.inverseOnSurface).padding(horizontal = 8.dp, vertical = 8.dp)) {
+    Column(modifier.fillMaxSize().background(MaterialTheme.colorScheme.inverseOnSurface).verticalScroll(rememberScrollState()).padding(horizontal = 8.dp, vertical = 8.dp)) {
         if (!fullScreen) {
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 20.dp)) {
                 Text("‹", Modifier.clip(CircleShape).clickable(onClick = onBack).padding(horizontal = 12.dp, vertical = 4.dp), style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary)
